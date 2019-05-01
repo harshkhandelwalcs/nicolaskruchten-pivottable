@@ -23,7 +23,6 @@ export class AppComponent {
     reader.onload = () => {
       const csv = reader.result;
       this.csvData = this.csvToJson(csv);
-      console.log('csv', this.csvData);
       let rowArray = [];
       for (var key in this.csvData[0]) {
         if (this.csvData[0].hasOwnProperty(key)) {
@@ -31,17 +30,22 @@ export class AppComponent {
         }
       }
       if (this.csvData) {
-        $("#output").pivotUI(
-          this.csvData,
-          {
-            vals: rowArray
-          }
-        );
-
+        this.createTable(this.csvData, rowArray);
       }
     };
-
   }
+
+
+  createTable(csvData, rows) {
+    $("#output").pivotUI(
+      csvData,
+      {
+        vals: rows
+      }
+    );
+  }
+
+
   csvToJson(csv) {
     const lines = csv.split('\n');
     const result = [];
@@ -77,20 +81,10 @@ export class AppComponent {
       }
       result.push(obj);
     }
-    console.log(result);
     return result;
   }
   ngOnInit() {
-    // $("#output").pivotUI(
-    //   [
-    //     { color: "blue", shape: "circle" },
-    //     { color: "red", shape: "triangle" }
-    //   ],
-    //   {
-    //     rows: ["color"],
-    //     cols: ["shape"]
-    //   }
-    // );
+
 
   }
 }
