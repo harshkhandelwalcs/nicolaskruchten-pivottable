@@ -28,9 +28,15 @@
               "node_modules/pivottable/dist/pivot.min.css"
             ],
             "scripts": [
+            
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/jquery-ui-dist/jquery-ui.min.js",
-              "node_modules/pivottable/dist/pivot.min.js"
+              "node_modules/pivottable/dist/pivot.min.js",
+              "node_modules/pivottable/dist/c3_renderers.min.js",
+              "node_modules/pivottable/dist/d3_renderers.min.js",
+              "node_modules/pivottable/dist/plotly_renderers.min.js"
+             
+              
             ]
           },
           "configurations": {

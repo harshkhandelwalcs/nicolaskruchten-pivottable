@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
 import 'pivottable/dist/pivot.min.js';
 import 'pivottable/dist/pivot.min.css';
+
 declare var jQuery: any;
 declare var $: any;
-
+var derivers = $.pivotUtilities.derivers;
+var renderers = $.extend($.pivotUtilities.renderers,
+  $.pivotUtilities.plotly_renderers);
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -38,9 +41,11 @@ export class AppComponent {
 
   createTable(csvData, rows) {
     $("#output").pivotUI(
+
       csvData,
       {
-        vals: rows
+        vals: rows,
+        renderers: renderers
       }
     );
   }
